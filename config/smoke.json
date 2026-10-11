@@ -1,0 +1,12 @@
+{
+  "seed": 42,
+  "embedding_dim": 16,
+  "epochs": 5,
+  "batch_size": 256,
+  "learning_rate": 0.003,
+  "negatives": 2,
+  "temperature": 0.15,
+  "candidates": 50,
+  "ranker_trees": 30,
+  "ks": [5, 10, 20]
+}

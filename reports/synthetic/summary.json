@@ -1,0 +1,484 @@
+{
+  "schema_version": 1,
+  "source": {
+    "type": "synthetic",
+    "seed": 42
+  },
+  "config": {
+    "seed": 42,
+    "embedding_dim": 32,
+    "epochs": 25,
+    "batch_size": 1024,
+    "learning_rate": 0.003,
+    "negatives": 4,
+    "temperature": 0.15,
+    "candidates": 100,
+    "ranker_trees": 100,
+    "ks": [
+      5,
+      10,
+      20
+    ]
+  },
+  "versions": {
+    "torch": "2.8.0+cpu",
+    "faiss": "1.12.0",
+    "lightgbm": "4.7.0"
+  },
+  "split": {
+    "cutoffs": [
+      59429,
+      79275,
+      89567
+    ],
+    "rows": {
+      "train": 2400,
+      "rank_train": 800,
+      "validation": 400,
+      "test": 400
+    },
+    "train_users": 100,
+    "train_catalog_items": 300
+  },
+  "training_seconds": 5.873401899938472,
+  "loss_history": [
+    {
+      "epoch": 1,
+      "pairwise_logistic_loss": 0.6956624523798625
+    },
+    {
+      "epoch": 2,
+      "pairwise_logistic_loss": 0.6882186929384867
+    },
+    {
+      "epoch": 3,
+      "pairwise_logistic_loss": 0.6827051758766174
+    },
+    {
+      "epoch": 4,
+      "pairwise_logistic_loss": 0.6765889143943786
+    },
+    {
+      "epoch": 5,
+      "pairwise_logistic_loss": 0.6672459928194682
+    },
+    {
+      "epoch": 6,
+      "pairwise_logistic_loss": 0.6538887095451354
+    },
+    {
+      "epoch": 7,
+      "pairwise_logistic_loss": 0.6437469498316447
+    },
+    {
+      "epoch": 8,
+      "pairwise_logistic_loss": 0.622841657002767
+    },
+    {
+      "epoch": 9,
+      "pairwise_logistic_loss": 0.5983018700281779
+    },
+    {
+      "epoch": 10,
+      "pairwise_logistic_loss": 0.580179344813029
+    },
+    {
+      "epoch": 11,
+      "pairwise_logistic_loss": 0.5515713079770406
+    },
+    {
+      "epoch": 12,
+      "pairwise_logistic_loss": 0.5320638227462768
+    },
+    {
+      "epoch": 13,
+      "pairwise_logistic_loss": 0.5013384064038594
+    },
+    {
+      "epoch": 14,
+      "pairwise_logistic_loss": 0.48032843311627704
+    },
+    {
+      "epoch": 15,
+      "pairwise_logistic_loss": 0.4587827003002167
+    },
+    {
+      "epoch": 16,
+      "pairwise_logistic_loss": 0.4323627662658691
+    },
+    {
+      "epoch": 17,
+      "pairwise_logistic_loss": 0.4206625763575236
+    },
+    {
+      "epoch": 18,
+      "pairwise_logistic_loss": 0.40540557940800986
+    },
+    {
+      "epoch": 19,
+      "pairwise_logistic_loss": 0.37979166467984515
+    },
+    {
+      "epoch": 20,
+      "pairwise_logistic_loss": 0.3723011414210002
+    },
+    {
+      "epoch": 21,
+      "pairwise_logistic_loss": 0.3538550794124603
+    },
+    {
+      "epoch": 22,
+      "pairwise_logistic_loss": 0.34663150827089945
+    },
+    {
+      "epoch": 23,
+      "pairwise_logistic_loss": 0.3306117363770803
+    },
+    {
+      "epoch": 24,
+      "pairwise_logistic_loss": 0.3268967644373576
+    },
+    {
+      "epoch": 25,
+      "pairwise_logistic_loss": 0.3102990726629893
+    }
+  ],
+  "ranking_training": {
+    "usable_query_groups": 94,
+    "candidate_rows": 9400,
+    "discarded_uninformative_groups": 6,
+    "positive_candidates": 352,
+    "forced_positive_injection": false
+  },
+  "validation": {
+    "retrieval": {
+      "users": 98,
+      "metrics": {
+        "@5": {
+          "recall": 0.018367346938775512,
+          "ndcg": 0.015786285387834113,
+          "mrr": 0.030612244897959183,
+          "hit_rate": 0.07142857142857142
+        },
+        "@10": {
+          "recall": 0.04679705215419501,
+          "ndcg": 0.030072826500962692,
+          "mrr": 0.04658244250080985,
+          "hit_rate": 0.19387755102040816
+        },
+        "@20": {
+          "recall": 0.09391804340783931,
+          "ndcg": 0.04843898288019787,
+          "mrr": 0.0572453554655646,
+          "hit_rate": 0.3469387755102041
+        }
+      }
+    },
+    "two_stage": {
+      "users": 98,
+      "metrics": {
+        "@5": {
+          "recall": 0.0452785876255264,
+          "ndcg": 0.04312016618043929,
+          "mrr": 0.08401360544217686,
+          "hit_rate": 0.17346938775510204
+        },
+        "@10": {
+          "recall": 0.07804502753482345,
+          "ndcg": 0.056370974332624994,
+          "mrr": 0.09459831551668285,
+          "hit_rate": 0.25510204081632654
+        },
+        "@20": {
+          "recall": 0.1193837058632977,
+          "ndcg": 0.0733402201238764,
+          "mrr": 0.10396729537635899,
+          "hit_rate": 0.3877551020408163
+        }
+      }
+    },
+    "popularity": {
+      "users": 98,
+      "metrics": {
+        "@5": {
+          "recall": 0.007653061224489796,
+          "ndcg": 0.005207862360340009,
+          "mrr": 0.007653061224489796,
+          "hit_rate": 0.02040816326530612
+        },
+        "@10": {
+          "recall": 0.014285714285714285,
+          "ndcg": 0.008731541338127612,
+          "mrr": 0.011763038548752833,
+          "hit_rate": 0.05102040816326531
+        },
+        "@20": {
+          "recall": 0.05128765792031098,
+          "ndcg": 0.023680946723778632,
+          "mrr": 0.020178323138849454,
+          "hit_rate": 0.17346938775510204
+        }
+      }
+    },
+    "candidate_recall": {
+      "users": 98,
+      "metrics": {
+        "@100": {
+          "recall": 0.44152899254940065,
+          "ndcg": 0.14180053642016366,
+          "mrr": 0.06925995502015188,
+          "hit_rate": 0.8367346938775511
+        }
+      }
+    },
+    "ranker_only_local_ms": {
+      "p50": 0.7311999797821045,
+      "p95": 0.9621049743145703
+    },
+    "cohorts": {
+      "warm_users": {
+        "retrieval": {
+          "users": 98,
+          "metrics": {
+            "@5": {
+              "recall": 0.018367346938775512,
+              "ndcg": 0.015786285387834113,
+              "mrr": 0.030612244897959183,
+              "hit_rate": 0.07142857142857142
+            },
+            "@10": {
+              "recall": 0.04679705215419501,
+              "ndcg": 0.030072826500962692,
+              "mrr": 0.04658244250080985,
+              "hit_rate": 0.19387755102040816
+            },
+            "@20": {
+              "recall": 0.09391804340783931,
+              "ndcg": 0.04843898288019787,
+              "mrr": 0.0572453554655646,
+              "hit_rate": 0.3469387755102041
+            }
+          }
+        },
+        "two_stage": {
+          "users": 98,
+          "metrics": {
+            "@5": {
+              "recall": 0.0452785876255264,
+              "ndcg": 0.04312016618043929,
+              "mrr": 0.08401360544217686,
+              "hit_rate": 0.17346938775510204
+            },
+            "@10": {
+              "recall": 0.07804502753482345,
+              "ndcg": 0.056370974332624994,
+              "mrr": 0.09459831551668285,
+              "hit_rate": 0.25510204081632654
+            },
+            "@20": {
+              "recall": 0.1193837058632977,
+              "ndcg": 0.0733402201238764,
+              "mrr": 0.10396729537635899,
+              "hit_rate": 0.3877551020408163
+            }
+          }
+        },
+        "popularity": {
+          "users": 98,
+          "metrics": {
+            "@5": {
+              "recall": 0.007653061224489796,
+              "ndcg": 0.005207862360340009,
+              "mrr": 0.007653061224489796,
+              "hit_rate": 0.02040816326530612
+            },
+            "@10": {
+              "recall": 0.014285714285714285,
+              "ndcg": 0.008731541338127612,
+              "mrr": 0.011763038548752833,
+              "hit_rate": 0.05102040816326531
+            },
+            "@20": {
+              "recall": 0.05128765792031098,
+              "ndcg": 0.023680946723778632,
+              "mrr": 0.020178323138849454,
+              "hit_rate": 0.17346938775510204
+            }
+          }
+        }
+      }
+    },
+    "out_of_catalog_target_fraction": 0.0,
+    "catalog_coverage_at_20": 0.7966666666666666
+  },
+  "test": {
+    "retrieval": {
+      "users": 98,
+      "metrics": {
+        "@5": {
+          "recall": 0.02408892128279883,
+          "ndcg": 0.025510357546560856,
+          "mrr": 0.05102040816326531,
+          "hit_rate": 0.10204081632653061
+        },
+        "@10": {
+          "recall": 0.04782555879494655,
+          "ndcg": 0.03537759511881298,
+          "mrr": 0.06088030450275349,
+          "hit_rate": 0.1836734693877551
+        },
+        "@20": {
+          "recall": 0.10346209912536442,
+          "ndcg": 0.05603348182312802,
+          "mrr": 0.07240368236608838,
+          "hit_rate": 0.35714285714285715
+        }
+      }
+    },
+    "two_stage": {
+      "users": 98,
+      "metrics": {
+        "@5": {
+          "recall": 0.042468415937803684,
+          "ndcg": 0.03969624747313648,
+          "mrr": 0.07465986394557823,
+          "hit_rate": 0.14285714285714285
+        },
+        "@10": {
+          "recall": 0.05564868804664723,
+          "ndcg": 0.045229294168299676,
+          "mrr": 0.0813613540654357,
+          "hit_rate": 0.19387755102040816
+        },
+        "@20": {
+          "recall": 0.10626822157434403,
+          "ndcg": 0.06475601042397836,
+          "mrr": 0.09229779052550265,
+          "hit_rate": 0.35714285714285715
+        }
+      }
+    },
+    "popularity": {
+      "users": 98,
+      "metrics": {
+        "@5": {
+          "recall": 0.027478134110787172,
+          "ndcg": 0.023767909894014373,
+          "mrr": 0.04625850340136054,
+          "hit_rate": 0.08163265306122448
+        },
+        "@10": {
+          "recall": 0.04698736637512147,
+          "ndcg": 0.033557339271649854,
+          "mrr": 0.057563977972141245,
+          "hit_rate": 0.16326530612244897
+        },
+        "@20": {
+          "recall": 0.07049319727891157,
+          "ndcg": 0.043438000682304044,
+          "mrr": 0.06362824578452934,
+          "hit_rate": 0.25510204081632654
+        }
+      }
+    },
+    "candidate_recall": {
+      "users": 98,
+      "metrics": {
+        "@100": {
+          "recall": 0.4716188856494979,
+          "ndcg": 0.15506376551658477,
+          "mrr": 0.08721447449443383,
+          "hit_rate": 0.9285714285714286
+        }
+      }
+    },
+    "ranker_only_local_ms": {
+      "p50": 0.665400002617389,
+      "p95": 1.0349299758672708
+    },
+    "cohorts": {
+      "warm_users": {
+        "retrieval": {
+          "users": 98,
+          "metrics": {
+            "@5": {
+              "recall": 0.02408892128279883,
+              "ndcg": 0.025510357546560856,
+              "mrr": 0.05102040816326531,
+              "hit_rate": 0.10204081632653061
+            },
+            "@10": {
+              "recall": 0.04782555879494655,
+              "ndcg": 0.03537759511881298,
+              "mrr": 0.06088030450275349,
+              "hit_rate": 0.1836734693877551
+            },
+            "@20": {
+              "recall": 0.10346209912536442,
+              "ndcg": 0.05603348182312802,
+              "mrr": 0.07240368236608838,
+              "hit_rate": 0.35714285714285715
+            }
+          }
+        },
+        "two_stage": {
+          "users": 98,
+          "metrics": {
+            "@5": {
+              "recall": 0.042468415937803684,
+              "ndcg": 0.03969624747313648,
+              "mrr": 0.07465986394557823,
+              "hit_rate": 0.14285714285714285
+            },
+            "@10": {
+              "recall": 0.05564868804664723,
+              "ndcg": 0.045229294168299676,
+              "mrr": 0.0813613540654357,
+              "hit_rate": 0.19387755102040816
+            },
+            "@20": {
+              "recall": 0.10626822157434403,
+              "ndcg": 0.06475601042397836,
+              "mrr": 0.09229779052550265,
+              "hit_rate": 0.35714285714285715
+            }
+          }
+        },
+        "popularity": {
+          "users": 98,
+          "metrics": {
+            "@5": {
+              "recall": 0.027478134110787172,
+              "ndcg": 0.023767909894014373,
+              "mrr": 0.04625850340136054,
+              "hit_rate": 0.08163265306122448
+            },
+            "@10": {
+              "recall": 0.04698736637512147,
+              "ndcg": 0.033557339271649854,
+              "mrr": 0.057563977972141245,
+              "hit_rate": 0.16326530612244897
+            },
+            "@20": {
+              "recall": 0.07049319727891157,
+              "ndcg": 0.043438000682304044,
+              "mrr": 0.06362824578452934,
+              "hit_rate": 0.25510204081632654
+            }
+          }
+        }
+      }
+    },
+    "out_of_catalog_target_fraction": 0.0,
+    "catalog_coverage_at_20": 0.7933333333333333
+  },
+  "limitations": [
+    "Observed ratings are converted to positive implicit proxies, not real clicks or exposure logs.",
+    "Unobserved items are sampled negatives and may be false negatives.",
+    "Global chronological splits; no future interactions enter feature statistics or model fitting.",
+    "Cold users use training popularity; out-of-catalog targets count as misses.",
+    "Evaluation aggregates future-period relevance sets; it is not online next-event replay.",
+    "Exact FAISS flat search on a small catalog does not establish million-item ANN scalability.",
+    "Fixed hyperparameters; validation is reported without selection or refitting."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "tests_passed": 12,
+  "coverage": {
+    "covered_lines": 378,
+    "num_statements": 438,
+    "percent_covered": 86.3013698630137,
+    "percent_covered_display": "86",
+    "missing_lines": 60,
+    "excluded_lines": 3,
+    "percent_statements_covered": 86.3013698630137,
+    "percent_statements_covered_display": "86"
+  }
+}
